@@ -1,0 +1,41 @@
+
+<html>
+    <head>
+      <title>Mobile Dashboard for ROS Robots</title>
+
+      <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0"> </script>
+
+      <script>
+
+     function draw()
+     {
+       const values=[];
+       for(let i=0;i<15;i++)
+       {
+         values[i]=random(0,100);
+       }
+       const shape=[5,3];
+       const a = tf.tensor3d(values,shape,'int32');
+       const b=  tf.tensor3d(values,shape,'int32');
+       const bb = b.transpose();
+
+       const c = a.matMul(bb);
+
+
+       a.dispose();
+       b.dispose();
+       c.dispose();
+       bb.dispose(); //manually disposing each tensor3d
+
+       //tf.tidy(myFunction)-->run the function myFunction but once done with it make sure you clean the function tensors
+       //to do it annomusly tf.tidy(() ==> {function definition});
+       console.log('hello');
+
+     }
+
+
+
+       </script>
+
+    </head>
+</html>
