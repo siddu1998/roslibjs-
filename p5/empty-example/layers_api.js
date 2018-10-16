@@ -34,3 +34,32 @@ const config=
 }
 
 model.compile(config);
+
+
+const xs = tf.tensor2d([[0.23,0.92],
+                            [0.23,0.52]]);
+
+const ys=tf.tensor2d([
+  [0.1,0.1,0.03],
+  [0.4,0.01,0.22],
+]);
+
+//you can use this config for fit
+// const configFit ={
+//   epochs:5
+// }
+
+train().then(()=>{console.log('training complete')
+let outputs = model.predict(xs);
+outputs.print();
+
+});
+
+async function train()
+{
+  for(let i=0;i<10;i++)
+  {
+const response = await model.fit(xs,ys);
+console.log(response.history.loss[0]);
+}
+}
